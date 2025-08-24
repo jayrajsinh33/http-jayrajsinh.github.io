@@ -54,12 +54,12 @@ const KB = {
     {
       institute: "Government Polytechnic Kheda",
       course: "Diploma in Information Technology",
-      period: "2021 – 2024"
+      period: "2022 – 2025"
     },
     {
       institute: "JG University",
       course: "B.E. / B.Tech in Information Technology",
-      period: "2024 – Present"
+      period: "2025 – Present"
     }
   ],
   navigation: {
@@ -307,3 +307,4 @@ appendMessage(
 Type <b>help</b> anytime.`,
   "bot"
 );
+
