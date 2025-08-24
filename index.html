@@ -3,37 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Login & Sign Up</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0d1b2a, #1b263b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+    .box {
+      background: #1b263b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px gold;
+      width: 350px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .box h2 {
+      margin-bottom: 20px;
+      color: gold;
+    }
+    .input-container {
+      position: relative;
+      margin: 15px 0;
+    }
+    .input-container i {
+      position: absolute;
+      top: 12px;
+      left: 10px;
+      color: gold;
+    }
+    .input-container input {
+      width: 90%;
+      padding: 12px 12px 12px 35px;
+      border: 1px solid gold;
+      border-radius: 8px;
+      background: transparent;
+      color: #fff;
+      outline: none;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: gold;
+      border: none;
+      border-radius: 8px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ffd700;
+      transform: scale(1.05);
+    }
+    .toggle-link {
+      margin-top: 15px;
+      display: block;
+      color: gold;
+      cursor: pointer;
+    }
+    #message {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
-<body  style="margin: 0; font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #0d1b2a, #1b263b);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;">
-
-  <div class="login-box">
+<body>
+  
+  <div class="box" id="loginBox">
     <h2>Login</h2>
     <form id="loginForm">
       <div class="input-container">
         <i class="fa fa-user"></i>
-        <input type="text" id="userid" placeholder="Enter jayrajsinh03" required>
+        <input type="text" id="loginUser" placeholder="Enter jayrajsinh03" required>
       </div>
-
       <div class="input-container">
         <i class="fa fa-lock"></i>
-        <input type="password" id="password" placeholder="Enter dip-247" required>
+        <input type="password" id="loginPass" placeholder="Enter dip-247" required>
       </div>
-
       <button type="submit" class="btn">Login</button>
-      <div id="message"></div>
+      <div id="loginMessage"></div>
     </form>
+    <span class="toggle-link" onclick="toggleForm('signupBox')">Don't have an account? Sign Up</span>
   </div>
 
-  <script src="script.js"></script>
+  <div class="box hidden" id="signupBox">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <div class="input-container">
+        <i class="fa fa-user"></i>
+        <input type="text" id="name" placeholder="Enter Full Name" required>
+      </div>
+      <div class="input-container">
+        <i class="fa fa-envelope"></i>
+        <input type="email" id="email" placeholder="Enter Email" required>
+      </div>
+      <div class="input-container">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="signupPass" placeholder="Enter Password" required>
+      </div>
+      <div class="input-container">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="confirmPass" placeholder="Confirm Password" required>
+      </div>
+      <div class="input-container">
+        <i class="fa fa-calendar"></i>
+        <input type="date" id="dob" required>
+      </div>
+      <button type="submit" class="btn">Sign Up</button>
+      <div id="signupMessage"></div>
+    </form>
+    <span class="toggle-link" onclick="toggleForm('loginBox')">Already have an account? Login</span>
+  </div>
+
+  <script>
+    function toggleForm(formId) {
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("signupBox").classList.add("hidden");
+      document.getElementById(formId).classList.remove("hidden");
+    }
+
+    // Login
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let user = document.getElementById("loginUser").value.trim();
+      let pass = document.getElementById("loginPass").value.trim();
+      if(user === "jayrajsinh03" && pass === "dip-247"){
+        document.getElementById("loginMessage").innerHTML = "<span style='color:lightgreen'>✅ Login Successful!</span>";
+        setTimeout(()=> {
+          window.location.href = "home.html"; // <-- redirect to home.html
+        }, 1500);
+      } else {
+        document.getElementById("loginMessage").innerHTML = "<span style='color:red'>❌ Invalid Username or Password</span>";
+      }
+    });
+
+    // Sign Up
+    document.getElementById("signupForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let pass = document.getElementById("signupPass").value;
+      let confirmPass = document.getElementById("confirmPass").value;
+      if(pass !== confirmPass){
+        document.getElementById("signupMessage").innerHTML = "<span style='color:red'>❌ Passwords do not match</span>";
+      } else {
+        document.getElementById("signupMessage").innerHTML = "<span style='color:lightgreen'>✅ Sign Up Successful! You can now login.</span>";
+        setTimeout(()=>toggleForm('loginBox'),1500);
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+</html>
+
 
 
