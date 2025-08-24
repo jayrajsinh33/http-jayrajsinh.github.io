@@ -1,25 +1,3 @@
-const form = document.getElementById("loginForm");
-const msg = document.getElementById("message");
-
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  let user = document.getElementById("userid").value;
-  let pass = document.getElementById("password").value;
-
-  if (user === "jayrajsinh03" && pass === "dip-247") {
-    msg.innerHTML = "<p class='success'>✅ Login Successful!</p>";
-    // Redirect after login
-    setTimeout(() => {
-      window.location.href = "home.html"; // change to your page
-    }, 1500);
-  } else {
-    msg.innerHTML = "<p class='error'>❌ Invalid User ID or Password</p>";
-  }
-});
-
-
-
 /* ============================
    Portfolio Chatbot (Front-end)
    Author: Jayrajsinh Chavda
@@ -76,12 +54,12 @@ const KB = {
     {
       institute: "Government Polytechnic Kheda",
       course: "Diploma in Information Technology",
-      period: "2022 – 2025"
+      period: "2021 – 2024"
     },
     {
       institute: "JG University",
       course: "B.E. / B.Tech in Information Technology",
-      period: "2025 – Present"
+      period: "2024 – Present"
     }
   ],
   navigation: {

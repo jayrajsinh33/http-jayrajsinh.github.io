@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    section {
+      padding: 50px;
+      text-align: center;
+    }
+
+    section h2 {
+      color: gold;
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+    
+    .education-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .edu-card {
+      background-color: #1a1a1a;
+      border: 2px solid gold;
+      border-radius: 12px;
+      width: 280px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden;
+    }
+
+    .edu-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px gold;
+    }
+
+    .edu-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 2px solid gold;
+    }
+
+    .edu-info {
+      padding: 15px;
+    }
+
+    .edu-info h3 {
+      color: gold;
+      margin-bottom: 8px;
+    }
+
+    .edu-info p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+   
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+        <nav>
+            <div class="left">Jayrajsinh Chavda</div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="education.html" style="color: gold;">Education</a></li>
+                <li><a href="aichatbox.html">ai chatbox</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <!-- Education Section -->
+  <section>
+    <h2>My Education</h2>
+    <div class="education-container">
+      
+      <!-- College 1 -->
+      <div class="edu-card">
+        <img src="clg1.jpg" alt="Government Polytechnic Kheda">
+        <div class="edu-info">
+          <h3>Government Polytechnic Kheda</h3>
+          <p>Diploma in Information Technology</p>
+          <p>2022 - 2025</p>
+        </div>
+      </div>
+
+      <!-- College 2 -->
+      <div class="edu-card">
+        <img src="clg2.jpg" alt="JG University">
+        <div class="edu-info">
+          <h3>JG University</h3>
+          <p>BE-TECH. in Information Technology</p>
+          <p>2025 - Present</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/jayrajsinh_03__?igsh=MTl6OGJxM2ZkMzdkdw==">Instagram</a>
+                <a href="https://www.facebook.com/share/1SPT9Dgh1Q/">Facebook</a>
+                <a href="https://www.linkedin.com/in/chavda-jayrajsinh-a12611333?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
