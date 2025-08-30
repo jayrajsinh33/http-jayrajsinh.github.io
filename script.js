@@ -1,5 +1,4 @@
-const form = document.getElementById("loginForm");
-const msg = document.getElementById("message");
+const form = document.getElementById("loginForm");const msg = document.getElementById("message");
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -329,3 +328,4 @@ appendMessage(
 Type <b>help</b> anytime.`,
   "bot"
 );
+
