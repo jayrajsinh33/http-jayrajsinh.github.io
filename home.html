@@ -1,70 +1,1165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jayrajsinh Chavda Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jayrajsinh Chavda - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 80px 0;
+    }
+    
+    h1, h2, h3 {
+      margin-bottom: 20px;
+    }
+    
+    .gold-text {
+      color: gold;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: gold;
+      color: black;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background: #ffd700;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+    }
+    
+    /* ===== NAVIGATION ===== */
+    header {
+      background-color: #111;
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: gold;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      position: relative;
+    }
+    
+    .nav-links li a:hover {
+      color: gold;
+    }
+    
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: gold;
+      transition: width 0.3s;
+    }
+    
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* ===== HERO SECTION ===== */
+    #hero {
+      padding-top: 150px;
+      padding-bottom: 80px;
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    
+    .hero-text {
+      flex: 1;
+    }
+    
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .hero-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      transition: transform 0.3s;
+    }
+    
+    .hero-image img:hover {
+      transform: scale(1.03);
+    }
+    
+    /* ===== ABOUT SECTION ===== */
+    #about {
+      background-color: #111;
+    }
+    
+    .about-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .about-content p {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    
+    /* ===== SKILLS SECTION ===== */
+    #skills {
+      background-color: #0a0a0a;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .skill-item {
+      background-color: #111;
+      color: gold;
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: 1px solid gold;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    /* Skills Section */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.skill-card {
+  background: linear-gradient(145deg, #1a1a1a, #151515);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  border-color: gold;
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+}
+
+.skill-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: gold;
+}
+
+.skill-name {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: gold;
+}
+
+.skill-bar {
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: gold;
+  border-radius: 3px;
+  width: 0;
+  transition: width 1.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+    
+    .skill-item:hover {
+      background-color: gold;
+      color: #111;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* ===== EDUCATION SECTION ===== */
+    #education {
+      background-color: #111;
+    }
+    
+    .education-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .edu-card {
+      background-color: #1a1a1a;
+      border: 2px solid gold;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 350px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden;
+    }
+    
+    .edu-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px gold;
+    }
+    
+    .edu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid gold;
+    }
+    
+    .edu-info {
+      padding: 20px;
+    }
+    
+    .edu-info h3 {
+      color: gold;
+      margin-bottom: 10px;
+    }
+    
+    .edu-info p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+    
+    /* ===== PROJECTS SECTION ===== */
+    #projects {
+      background-color: #0a0a0a;
+    }
+    
+    .projects-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+    
+    .projects-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .project-link {
+      display: inline-block;
+      padding: 12px 25px;
+      border: 2px solid gold;
+      border-radius: 30px;
+      color: gold;
+      text-decoration: none;
+      margin: 10px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    
+    .project-link:hover {
+      background-color: gold;
+      color: black;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* ===== CHAT SECTION ===== */
+    #chat {
+      background-color: #111;
+    }
+    
+    .chat-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .chat-container {
+      width: 100%;
+      max-width: 600px;
+      border: 2px solid gold;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      background: #112240;
+    }
+    
+    .chat-header {
+      background: gold;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .chat-messages {
+      height: 300px;
+      padding: 15px;
+      overflow-y: auto;
+      background: #0a192f;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .message {
+      padding: 10px 15px;
+      border-radius: 8px;
+      max-width: 80%;
+      line-height: 1.4;
+    }
+    
+    .bot-message {
+      background: #374151;
+      color: white;
+      align-self: flex-start;
+    }
+    
+    .user-message {
+      background: gold;
+      color: black;
+      align-self: flex-end;
+    }
+    
+    .typing {
+      font-style: italic;
+      color: #aaa;
+    }
+    
+    .chat-input {
+      display: flex;
+      border-top: 2px solid gold;
+    }
+    
+    .chat-input input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: #0d1b2a;
+      color: white;
+    }
+    
+    .chat-input button {
+      background: gold;
+      color: black;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    
+    .chat-input button:hover {
+      background: #ffd700;
+    }
+    
+    /* ===== CONTACT SECTION ===== */
+    #contact {
+      background-color: #0a0a0a;
+    }
+    
+    .contact-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group label {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      padding: 12px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #111;
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+    
+    .footer-socials {
+      margin-bottom: 20px;
+    }
+    
+    .footer-socials a {
+      color: gold;
+      margin: 0 15px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    
+    .footer-socials a:hover {
+      color: #ffd700;
+    }
+    
+    .copyright {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 992px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #111;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Jayrajsinh Chavda</div>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="Marksheet.html">Achievements  </a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#chat">AI Chat</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Navigation -->
-    <header>
-        <nav>
-            <div class="left">Jayrajsinh Chavda</div>
-            <ul>
-                <li><a href="home.html" style="color: gold;">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="aichatbox.html">ai chatbox</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Hello, I'm <span class="gold-text">Jayrajsinh Chavda</span></h1>
+          <h3>B.Tech Student</h3>
+          <p>HTML | CSS | JavaScript | Python | Java | C++</p>
+          <a href="#contact" class="btn">Contact Me</a>
+        </div>
+        <div class="hero-image">
+          <img src="my photo2.jpg" alt="Jayrajsinh Chavda">
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- First Section -->
-   <!-- Home Section -->
-<section id="home">
-    <table width="100%" cellpadding="20">
-        <tr>
-            <!-- Left side: text -->
-            <td valign="top" width="60%">
-                <h1>Hello, I am <span style="color:gold;">Jayrajsinh Chavda</span></h1>
-                <h3>I am a B.Tech Student</h3>
-                <p>HTML | CSS | JavaScript | Python | C++ | Java | Content Creation</p>
-                <a href="contact.html">
-                    <button style="background-color:gold; padding:10px 20px; border:none; font-weight:bold; cursor:pointer;">
-                        Contact Me
-                    </button>
-                </a>
-            </td>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About <span class="gold-text">Me</span></h2>
+      <div class="about-content">
+        <p>
+          I am an aspiring Information Technology professional with a strong passion for creating 
+          interactive and user-friendly web experiences. I recently completed my Diploma in IT at 
+          Government Polytechnic Kheda and currently I am pursuing my Degree at JG University. 
+          My aim is to work for top companies like Microsoft. My goal is to keep learning, building, 
+          and innovating through technology that makes people's lives better.
+        </p>
+        <a href="#contact" class="btn">Get In Touch</a>
+      </div>
+    </div>
+  </section>
 
-            <!-- Right side: image -->
-            <td align="right" valign="top">
-                <img src="my photo2.jpg" alt="Jayrajsinh Chavda" width="250" height="500" style="border-radius: 10px;">
-            </td>
-        </tr>
-    </table>
+  <!-- Skills Section -->
+<!-- Skills Section -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">My <span class="gold-text">Skills</span></h2>
+    <div class="skills-container">
+      <!-- HTML Skill -->
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-html5"></i>
+        </div>
+        <h3 class="skill-name">HTML</h3>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="90%"></div>
+        </div>
+         <p class="skill-desc">Semantic markup, accessibility, and modern HTML5 features.</p>
+      </div>
+      
+      <!-- CSS Skill -->
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-css3-alt"></i>
+        </div>
+        <h3 class="skill-name">CSS</h3>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="90%"></div>
+        </div>
+        <p class="skill-desc">Flexbox, Grid, animations, and responsive design principles.</p>
+      </div>
+      
+      <!-- JavaScript Skill -->
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-js-square"></i>
+        </div>
+        <h3 class="skill-name">JavaScript</h3>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="70%"></div>
+        </div>
+         <p class="skill-desc">ES6+, DOM manipulation, async programming, and APIs.</p>
+      </div>
+      
+      <!-- Python Skill -->
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-python"></i>
+        </div>
+        <h3 class="skill-name">Python</h3>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="40%"></div>
+        </div>
+        <p>I have a basic understanding of this language and am still working on it.</p>
+      </div>
+      
+      <!-- Java Skill -->
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-java"></i>
+        </div>
+        <h3 class="skill-name">Java</h3>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="30%"></div>
+        </div>
+        <p>I have a basic understanding of this language and am still working on it.</p>
+      </div>
+      
+      <!-- C++ Skill -->
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3 class="skill-name">C++</h3>
+        <div class="skill-bar">
+          <div class="skill-progress" data-width="30%"></div>
+        </div>
+        <p>I have a basic understanding of this language and am still working on it.</p>
+      </div>
+      
+      
+      
+    </div>
+  </div>
 </section>
 
-
-
-
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            
-            <div class="footer-socials">
-                <a href="https://www.instagram.com/jayrajsinh_03__?igsh=MTl6OGJxM2ZkMzdkdw==">Instagram</a>
-                <a href="https://www.facebook.com/share/1SPT9Dgh1Q/">Facebook</a>
-                <a href="https://www.linkedin.com/in/chavda-jayrajsinh-a12611333?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
-            </div>
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">My <span class="gold-text">Education</span></h2>
+      <div class="education-container">
+        <div class="edu-card">
+          <img src="SCHOOL.jpg" alt="Eklavya Education Campus">
+          <div class="edu-info">
+            <h3>Eklavya Education Campus</h3>
+            <p>10th Standard SSC (76.29%)</p>
+            <p>2022</p>
+          </div>
         </div>
-    </footer>
+        
+        <div class="edu-card">
+          <img src="clg1.jpg" alt="Government Polytechnic Kheda">
+          <div class="edu-info">
+            <h3>Government Polytechnic Kheda</h3>
+            <p>Diploma in Information Technology</p>
+            <p>2022 - 2025</p>
+          </div>
+        </div>
 
+        <div class="edu-card">
+          <img src="clg2.jpg" alt="JG University">
+          <div class="edu-info">
+            <h3>JG University</h3>
+            <p>B.Tech in Information Technology</p>
+            <p>2025 - Present</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">My <span class="gold-text">Projects</span></h2>
+      <div class="projects-intro">
+        <p>Here are some of the projects I have worked on recently.</p>
+      </div>
+      <div class="projects-container">
+        <a href="#" class="project-link">Portfolio Website</a>
+        <a href="https://jayrajsinh33.github.io/FRIENDSHIP-BOND-CHEKER/" 
+           target="_blank" class="project-link">Bond Checker</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chat Section -->
+  <section id="chat">
+    <div class="container">
+      <h2 class="section-title">Chat with <span class="gold-text">AI</span></h2>
+      <div class="chat-wrapper">
+        <div class="chat-container">
+          <div class="chat-header">AI Assistant</div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">Hello! 👋 I'm your AI assistant. How can I help you today?</div>
+          </div>
+          <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact <span class="gold-text">Me</span></h2>
+      <div class="contact-container">
+        <p class="projects-intro">If you'd like to get in touch, fill out the form below or connect via social media.</p>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/jayrajsinh_03__?igsh=MTl6OGJxM2ZkMzdkdw==" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1SPT9Dgh1Q/" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/chavda-jayrajsinh-a12611333?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <p class="copyright">© 2023 Jayrajsinh Chavda. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+    
+    // Form submission
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! I will get back to you soon.');
+      this.reset();
+    });
+  </script>
+
+  <!-- Chatbot Script -->
+  <script>
+    const chatMessages = document.getElementById("chatMessages");
+    const userInput = document.getElementById("userInput");
+
+    /* ---------- Auto-scroll ---------- */
+    function scrollToBottom() {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    /* ---------- Render bubbles ---------- */
+    function appendMessage(text, who = "user") {
+      const bubble = document.createElement("div");
+      bubble.className = (who === "user") ? "user-message message" : "bot-message message";
+      bubble.innerHTML = text;
+      chatMessages.appendChild(bubble);
+      scrollToBottom();
+    }
+
+    function showTyping() {
+      const t = document.createElement("div");
+      t.className = "bot-message message typing";
+      t.id = "typing";
+      t.textContent = "💭 AI is typing…";
+      chatMessages.appendChild(t);
+      scrollToBottom();
+    }
+    
+    function hideTyping() {
+      const t = document.getElementById("typing");
+      if (t) t.remove();
+    }
+
+    /* ---------- Knowledge Base ---------- */
+    const KB = {
+      profile: {
+        name: "Jayrajsinh Chavda",
+        role: "Information Technology student / Web Developer",
+        summary:
+          "I'm an aspiring IT professional passionate about creating interactive, user-friendly web experiences. Diploma in IT (Govt. Polytechnic Kheda), currently pursuing Degree at JG University. Goal: work for top companies like Microsoft and build technology that improves lives."
+      },
+      skills: ["HTML", "CSS", "JavaScript", "Python", "C++", "Java", "Content Creation"],
+      projects: [
+        { title: "Portfolio Website", url: "#" },
+        { title: "Bond Checker", url: "https://jayrajsinh33.github.io/FRIENDSHIP-BOND-CHEKER/" }
+      ],
+      education: [
+        { institute: "Government Polytechnic Kheda", course: "Diploma in Information Technology", period: "2022 – 2025" },
+        { institute: "JG University", course: "B.E. / B.Tech in Information Technology", period: "2025 – Present" }
+      ],
+      navigation: {
+        home: "#hero",
+        about: "#about",
+        projects: "#projects",
+        education: "#education",
+        contact: "#contact",
+        aichatbox: "#chat"
+      },
+      socials: {
+        instagram: "https://www.instagram.com/jayrajsinh_03__",
+        facebook: "https://www.facebook.com/share/1SPT9Dgh1Q/",
+        linkedin: "https://www.linkedin.com/in/chavda-jayrajsinh-a12611333"
+      }
+    };
+
+    /* ---------- Text utils ---------- */
+    function norm(s) {
+      return (s || "")
+        .toLowerCase()
+        .replace(/[`~!@#$%^&*()_+\-=\[\]{};:'",.<>/?\\|]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    /* ---------- Levenshtein ---------- */
+    function levenshtein(a, b) {
+      const m = a.length, n = b.length;
+      if (m === 0) return n;
+      if (n === 0) return m;
+      const dp = Array.from({ length: m + 1 }, (_, i) => [i]);
+      for (let j = 1; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+        }
+      }
+      return dp[m][n];
+    }
+    
+    function similarity(a, b) {
+      a = norm(a); b = norm(b);
+      if (!a || !b) return 0;
+      const dist = levenshtein(a, b);
+      return 1 - dist / Math.max(a.length, b.length);
+    }
+
+    /* ---------- Intents ---------- */
+    const intents = [
+      { tag: "greet", keys: ["hi","hello","hey","namaste","good morning","good evening"] },
+      { tag: "name",  keys: ["your name","who are you","developer name","portfolio owner"] },
+      { tag: "role",  keys: ["what do you do","your role","profession","job","goal","aim"] },
+      { tag: "skills", keys: ["skills","tech stack","programming languages","what you know","tools"] },
+      { tag: "projects", keys: ["projects","work","portfolio","bond checker","show projects"] },
+      { tag: "education", keys: ["education","study","college","degree","diploma","jg university","polytechnic"] },
+      { tag: "contact", keys: ["contact","email","reach you","connect","message you"] },
+      { tag: "socials", keys: ["instagram","facebook","linkedin","social"] },
+      { tag: "navigate", keys: ["open","go to","navigate","visit","take me to"] },
+      { tag: "thanks", keys: ["thanks","thank you","great","nice","awesome"] },
+      { tag: "help", keys: ["help","commands","abilities","options","what can you do","features"] }
+    ];
+
+    /* ---------- Responses with Emojis ---------- */
+    function respGreet() {
+      return `👋 Hey! I'm your AI assistant for <b>${KB.profile.name}</b>.<br>
+      🤖 Ask me about <b>skills</b> 💻, <b>projects</b> 🚀, <b>education</b> 🎓, or type <b>help</b> ❓.`;
+    }
+
+    function respName() { 
+      return `🙋 This portfolio belongs to <b>${KB.profile.name}</b>.`; 
+    }
+
+    function respRole() { 
+      return `👨‍💻 <b>${KB.profile.name}</b> — ${KB.profile.role}.<br>✨ ${KB.profile.summary}`; 
+    }
+
+    function respSkills() { 
+      return `💻 Here are my key skills:<br>⚡ ${KB.skills.join("<br>⚡ ")}`; 
+    }
+
+    function respProjects() {
+      return `📂 Recent projects:<br>${KB.projects.map(
+        p => `🚀 <b>${p.title}</b> — <a href="${p.url}" target="_blank" style="color: gold;">open 🔗</a>`
+      ).join("<br>")}`;
+    }
+
+    function respEducation() {
+      return `🎓 My education journey:<br><br>` +
+        KB.education.map(e =>
+          `🏫 <b>${e.institute}</b><br>📘 ${e.course}<br>📅 ${e.period}`
+        ).join("<br><br>");
+    }
+
+    function respContact() { 
+      return `📞 You can reach me on the <a href="#contact" style="color: gold;">Contact page</a> 💌 or via my socials 🌐 (type <b>socials</b>).`; 
+    }
+
+    function respSocials() {
+      return `🌐 My social links:<br>
+       📸 <a href="${KB.socials.instagram}" target="_blank" style="color: gold;">Instagram</a><br>
+       👥 <a href="${KB.socials.facebook}" target="_blank" style="color: gold;">Facebook</a><br>
+       💼 <a href="${KB.socials.linkedin}" target="_blank" style="color: gold;">LinkedIn</a>`;
+    }
+
+    function respHelp() {
+      return `🛠️ Here's what I can do:<br>
+       👉 "Show your <b>skills</b> 💻"<br>
+       👉 "Tell me about your <b>projects</b> 🚀"<br>
+       👉 "What is your <b>education</b>? 🎓"<br>
+       👉 "Open <b>projects</b> page" 🌐<br>
+       👉 "Your <b>social links</b>? 🌍"`;
+    }
+
+    /* ---------- Navigation ---------- */
+    function handleNavigation(q) {
+      const words = norm(q).split(" ");
+      const candidates = Object.keys(KB.navigation);
+      let best = null, bestScore = 0;
+      for (const page of candidates) {
+        for (const w of words) {
+          const score = similarity(w, page);
+          if (score > bestScore) { bestScore = score; best = page; }
+        }
+      }
+      if (best && bestScore >= 0.5) {
+        const url = KB.navigation[best];
+        // Smooth scroll to section
+        document.querySelector(url).scrollIntoView({ behavior: 'smooth' });
+        return `🔗 Navigating to <b>${best}</b> section…`;
+      }
+      return null;
+    }
+
+    /* ---------- Intent detection ---------- */
+    function detectIntent(q) {
+      const nq = norm(q);
+      let best = { tag: null, score: 0 };
+
+      for (const intent of intents) {
+        for (const key of intent.keys) {
+          const s = similarity(nq, key);
+          if (s > best.score) best = { tag: intent.tag, score: s };
+
+          if (nq.includes(norm(key))) {
+            if (0.7 > best.score) best = { tag: intent.tag, score: 0.7 };
+          }
+        }
+      }
+      return best.tag;
+    }
+
+    /* ---------- Fuzzy KB ---------- */
+    const searchableKB = [
+      ["name", respName()],
+      ["role", respRole()],
+      ["skills", respSkills()],
+      ["projects", respProjects()],
+      ["education", respEducation()],
+      ["contact", respContact()],
+      ["socials", respSocials()],
+      ["help", respHelp()]
+    ];
+    
+    function fuzzyAnswer(q) {
+      const nq = norm(q);
+
+      if (/bond|checker/.test(nq)) return respProjects();
+      if (/polytechnic|kheda|diploma|jg university|degree|btech/.test(nq)) return respEducation();
+      if (/skill|stack|language|tech/.test(nq)) return respSkills();
+
+      let best = null, score = 0;
+      for (const [k, v] of searchableKB) {
+        const s = similarity(nq, k);
+        if (s > score) { score = s; best = v; }
+      }
+      if (score >= 0.4) return best;
+
+      return null;
+    }
+
+    /* ---------- Brain ---------- */
+    function answerQuestion(q) {
+      const intent = detectIntent(q);
+
+      switch (intent) {
+        case "greet": return respGreet();
+        case "name": return respName();
+        case "role": return respRole();
+        case "skills": return respSkills();
+        case "projects": return respProjects();
+        case "education": return respEducation();
+        case "contact": return respContact();
+        case "socials": return respSocials();
+        case "help": return respHelp();
+        case "navigate": {
+          const nav = handleNavigation(q);
+          if (nav) return nav;
+          break;
+        }
+        case "thanks": return "🙌 Glad I could help! 🚀";
+        default: break;
+      }
+
+      const fuzz = fuzzyAnswer(q);
+      if (fuzz) return fuzz;
+
+      return `🤔 I didn't catch that… 😅<br>
+      💡 Try asking about my <b>skills</b> 💻, <b>projects</b> 📂, or <b>education</b> 🎓.<br>
+      Type <b>help</b> ❓ anytime.`;
+    }
+
+    /* ---------- Public send ---------- */
+    async function sendMessage() {
+      const text = (userInput.value || "").trim();
+      if (!text) return;
+
+      appendMessage(text, "user");
+      userInput.value = "";
+      showTyping();
+
+      await new Promise(r => setTimeout(r, 250));
+
+      const reply = answerQuestion(text);
+      hideTyping();
+      appendMessage(reply, "bot");
+    }
+
+    /* ---------- ENTER to send ---------- */
+    userInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    /* ---------- Initial tip ---------- */
+    appendMessage(`💡 Tip: Try "show projects 🚀", "open education 🎓", or "your skills 💻?".<br>
+    Type <b>help</b> ❓ anytime.`, "bot");
+
+
+    // Animate skill bars when section is in view
+function animateSkillBars() {
+  const skillSection = document.getElementById('skills');
+  const skillBars = document.querySelectorAll('.skill-progress');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        skillBars.forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          bar.style.width = width;
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  observer.observe(skillSection);
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', animateSkillBars);
+  </script>
 </body>
-
 </html>
-
