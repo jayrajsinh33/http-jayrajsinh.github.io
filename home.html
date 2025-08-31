@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,10 +13,21 @@
       box-sizing: border-box;
     }
     
+    :root {
+      --dark-blue: #0a192f;
+      --navy: #112240;
+      --light-navy: #233554;
+      --gold: #ffd700;
+      --light-gold: #f9d71c;
+      --accent: #3f5efb;
+      --text: #e6f1ff;
+      --text-secondary: #a8b2d1;
+    }
+    
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #0a0a0a;
-      color: white;
+      background-color: var(--dark-blue);
+      color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -29,6 +40,14 @@
     
     section {
       padding: 80px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     h1, h2, h3 {
@@ -36,13 +55,13 @@
     }
     
     .gold-text {
-      color: gold;
+      color: var(--gold);
     }
     
     .btn {
       display: inline-block;
-      background: gold;
-      color: black;
+      background: var(--gold);
+      color: var(--dark-blue);
       padding: 12px 25px;
       border: none;
       border-radius: 8px;
@@ -53,7 +72,7 @@
     }
     
     .btn:hover {
-      background: #ffd700;
+      background: var(--light-gold);
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
     }
@@ -66,7 +85,7 @@
     
     /* ===== NAVIGATION ===== */
     header {
-      background-color: #111;
+      background-color: var(--navy);
       padding: 15px 0;
       position: fixed;
       width: 100%;
@@ -84,7 +103,7 @@
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: gold;
+      color: var(--gold);
     }
     
     .nav-links {
@@ -94,7 +113,7 @@
     }
     
     .nav-links li a {
-      color: white;
+      color: var(--text);
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
@@ -102,7 +121,7 @@
     }
     
     .nav-links li a:hover {
-      color: gold;
+      color: var(--gold);
     }
     
     .nav-links li a::after {
@@ -112,7 +131,7 @@
       height: 2px;
       bottom: -5px;
       left: 0;
-      background-color: gold;
+      background-color: var(--gold);
       transition: width 0.3s;
     }
     
@@ -124,7 +143,7 @@
       display: none;
       background: none;
       border: none;
-      color: white;
+      color: var(--text);
       font-size: 1.5rem;
       cursor: pointer;
     }
@@ -133,7 +152,7 @@
     #hero {
       padding-top: 150px;
       padding-bottom: 80px;
-      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+      background: linear-gradient(to bottom, var(--dark-blue), var(--navy));
     }
     
     .hero-content {
@@ -155,7 +174,7 @@
     .hero-text h3 {
       font-size: 1.5rem;
       margin-bottom: 20px;
-      color: #ccc;
+      color: var(--text-secondary);
     }
     
     .hero-text p {
@@ -182,7 +201,7 @@
     
     /* ===== ABOUT SECTION ===== */
     #about {
-      background-color: #111;
+      background-color: var(--navy);
     }
     
     .about-content {
@@ -199,95 +218,70 @@
     
     /* ===== SKILLS SECTION ===== */
     #skills {
-      background-color: #0a0a0a;
+      background-color: var(--dark-blue);
     }
     
     .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
       margin-top: 30px;
     }
     
-    .skill-item {
-      background-color: #111;
-      color: gold;
-      padding: 15px 25px;
-      border-radius: 30px;
-      border: 1px solid gold;
-      font-weight: bold;
+    .skill-card {
+      background: linear-gradient(145deg, var(--navy), var(--light-navy));
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
       transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
     }
-
-    /* Skills Section */
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.skill-card {
-  background: linear-gradient(145deg, #1a1a1a, #151515);
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 25px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.skill-card:hover {
-  transform: translateY(-10px);
-  border-color: gold;
-  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
-}
-
-.skill-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  color: gold;
-}
-
-.skill-name {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: gold;
-}
-
-.skill-bar {
-  height: 6px;
-  background: #333;
-  border-radius: 3px;
-  margin: 15px 0;
-  overflow: hidden;
-}
-
-.skill-progress {
-  height: 100%;
-  background: gold;
-  border-radius: 3px;
-  width: 0;
-  transition: width 1.5s ease-in-out;
-}
-
-@media (max-width: 768px) {
-  .skills-container {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
     
-    .skill-item:hover {
-      background-color: gold;
-      color: #111;
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    .skill-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--gold);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+    }
+    
+    .skill-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+    
+    .skill-name {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--gold);
+    }
+    
+    .skill-bar {
+      height: 6px;
+      background: #333;
+      border-radius: 3px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.5s ease-in-out;
     }
     
     /* ===== EDUCATION SECTION ===== */
     #education {
-      background-color: #111;
+      background-color: var(--navy);
     }
     
     .education-container {
@@ -298,25 +292,32 @@
     }
     
     .edu-card {
-      background-color: #1a1a1a;
-      border: 2px solid gold;
+      background-color: var(--light-navy);
+      border: 2px solid var(--gold);
       border-radius: 12px;
       width: 100%;
       max-width: 350px;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .edu-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     .edu-card:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 25px gold;
+      box-shadow: 0 0 25px var(--gold);
     }
     
     .edu-card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
-      border-bottom: 2px solid gold;
+      border-bottom: 2px solid var(--gold);
     }
     
     .edu-info {
@@ -324,18 +325,19 @@
     }
     
     .edu-info h3 {
-      color: gold;
+      color: var(--gold);
       margin-bottom: 10px;
     }
     
     .edu-info p {
       margin: 8px 0;
       font-size: 14px;
+      color: var(--text-secondary);
     }
     
     /* ===== PROJECTS SECTION ===== */
     #projects {
-      background-color: #0a0a0a;
+      background-color: var(--dark-blue);
     }
     
     .projects-intro {
@@ -354,25 +356,32 @@
     .project-link {
       display: inline-block;
       padding: 12px 25px;
-      border: 2px solid gold;
+      border: 2px solid var(--gold);
       border-radius: 30px;
-      color: gold;
+      color: var(--gold);
       text-decoration: none;
       margin: 10px;
       transition: all 0.3s ease;
       font-weight: bold;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .project-link.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     .project-link:hover {
-      background-color: gold;
-      color: black;
+      background-color: var(--gold);
+      color: var(--dark-blue);
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
     }
     
     /* ===== CHAT SECTION ===== */
     #chat {
-      background-color: #111;
+      background-color: var(--navy);
     }
     
     .chat-wrapper {
@@ -383,16 +392,23 @@
     .chat-container {
       width: 100%;
       max-width: 600px;
-      border: 2px solid gold;
+      border: 2px solid var(--gold);
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-      background: #112240;
+      background: var(--light-navy);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .chat-container.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     .chat-header {
-      background: gold;
-      color: black;
+      background: var(--gold);
+      color: var(--dark-blue);
       font-weight: bold;
       text-align: center;
       padding: 15px;
@@ -403,7 +419,7 @@
       height: 300px;
       padding: 15px;
       overflow-y: auto;
-      background: #0a192f;
+      background: var(--navy);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -423,8 +439,8 @@
     }
     
     .user-message {
-      background: gold;
-      color: black;
+      background: var(--gold);
+      color: var(--dark-blue);
       align-self: flex-end;
     }
     
@@ -435,7 +451,7 @@
     
     .chat-input {
       display: flex;
-      border-top: 2px solid gold;
+      border-top: 2px solid var(--gold);
     }
     
     .chat-input input {
@@ -444,13 +460,13 @@
       border: none;
       outline: none;
       font-size: 16px;
-      background: #0d1b2a;
-      color: white;
+      background: var(--navy);
+      color: var(--text);
     }
     
     .chat-input button {
-      background: gold;
-      color: black;
+      background: var(--gold);
+      color: var(--dark-blue);
       border: none;
       padding: 12px 20px;
       font-size: 16px;
@@ -460,12 +476,12 @@
     }
     
     .chat-input button:hover {
-      background: #ffd700;
+      background: var(--light-gold);
     }
     
     /* ===== CONTACT SECTION ===== */
     #contact {
-      background-color: #0a0a0a;
+      background-color: var(--dark-blue);
     }
     
     .contact-container {
@@ -494,8 +510,8 @@
       padding: 12px;
       border: 1px solid #333;
       border-radius: 8px;
-      background: #111;
-      color: white;
+      background: var(--navy);
+      color: var(--text);
       font-size: 1rem;
     }
     
@@ -506,7 +522,7 @@
     
     /* ===== FOOTER ===== */
     footer {
-      background-color: #111;
+      background-color: var(--navy);
       padding: 40px 0 20px;
       text-align: center;
     }
@@ -516,7 +532,7 @@
     }
     
     .footer-socials a {
-      color: gold;
+      color: var(--gold);
       margin: 0 15px;
       font-size: 1.5rem;
       text-decoration: none;
@@ -524,12 +540,41 @@
     }
     
     .footer-socials a:hover {
-      color: #ffd700;
+      color: var(--light-gold);
     }
     
     .copyright {
-      color: #777;
+      color: var(--text-secondary);
       font-size: 0.9rem;
+    }
+    
+    /* ===== ANIMATIONS ===== */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Scroll progress indicator */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      z-index: 1000;
+      transition: width 0.2s ease;
     }
     
     /* ===== RESPONSIVE DESIGN ===== */
@@ -552,7 +597,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #111;
+        background-color: var(--navy);
         padding: 20px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
       }
@@ -568,21 +613,29 @@
       .section-title {
         font-size: 2rem;
       }
+      
+      .skills-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress"></div>
+  
   <!-- Navigation -->
   <header>
     <div class="container">
       <nav>
-        <div class="logo">My Portfolio</div>
+        <div class="logo">Jayrajsinh Chavda</div>
         <ul class="nav-links">
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#education">Education</a></li>
-          <li><a href="Marksheet.html">Achievements  </a></li>
+          <li><a href="Marksheet.html">Achievements</a></li>
+          <li><a href="Roadmap.html">RoadMap</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#chat">AI Chat</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -605,7 +658,7 @@
           <a href="#contact" class="btn">Contact Me</a>
         </div>
         <div class="hero-image">
-          <img src="my photo2.jpg" alt="Jayrajsinh Chavda">
+          <img src="my photo2.jpg" alt="Jayrajsinh Chavda" class="floating">
         </div>
       </div>
     </div>
@@ -629,88 +682,84 @@
   </section>
 
   <!-- Skills Section -->
-<!-- Skills Section -->
-<section id="skills">
-  <div class="container">
-    <h2 class="section-title">My <span class="gold-text">Skills</span></h2>
-    <div class="skills-container">
-      <!-- HTML Skill -->
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fab fa-html5"></i>
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My <span class="gold-text">Skills</span></h2>
+      <div class="skills-container">
+        <!-- HTML Skill -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fab fa-html5"></i>
+          </div>
+          <h3 class="skill-name">HTML</h3>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90%"></div>
+          </div>
+           <p class="skill-desc">Semantic markup, accessibility, and modern HTML5 features.</p>
         </div>
-        <h3 class="skill-name">HTML</h3>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="90%"></div>
+        
+        <!-- CSS Skill -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fab fa-css3-alt"></i>
+          </div>
+          <h3 class="skill-name">CSS</h3>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90%"></div>
+          </div>
+          <p class="skill-desc">Flexbox, Grid, animations, and responsive design principles.</p>
         </div>
-         <p class="skill-desc">Semantic markup, accessibility, and modern HTML5 features.</p>
+        
+        <!-- JavaScript Skill -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fab fa-js-square"></i>
+          </div>
+          <h3 class="skill-name">JavaScript</h3>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="70%"></div>
+          </div>
+           <p class="skill-desc">ES6+, DOM manipulation, async programming, and APIs.</p>
+        </div>
+        
+        <!-- Python Skill -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fab fa-python"></i>
+          </div>
+          <h3 class="skill-name">Python</h3>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="40%"></div>
+          </div>
+          <p>I have a basic understanding of this language and am still working on it.</p>
+        </div>
+        
+        <!-- Java Skill -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fab fa-java"></i>
+          </div>
+          <h3 class="skill-name">Java</h3>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="30%"></div>
+          </div>
+          <p>I have a basic understanding of this language and am still working on it.</p>
+        </div>
+        
+        <!-- C++ Skill -->
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="skill-name">C++</h3>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="30%"></div>
+          </div>
+          <p>I have a basic understanding of this language and am still working on it.</p>
+        </div>
       </div>
-      
-      <!-- CSS Skill -->
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fab fa-css3-alt"></i>
-        </div>
-        <h3 class="skill-name">CSS</h3>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="90%"></div>
-        </div>
-        <p class="skill-desc">Flexbox, Grid, animations, and responsive design principles.</p>
-      </div>
-      
-      <!-- JavaScript Skill -->
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fab fa-js-square"></i>
-        </div>
-        <h3 class="skill-name">JavaScript</h3>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="70%"></div>
-        </div>
-         <p class="skill-desc">ES6+, DOM manipulation, async programming, and APIs.</p>
-      </div>
-      
-      <!-- Python Skill -->
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fab fa-python"></i>
-        </div>
-        <h3 class="skill-name">Python</h3>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="40%"></div>
-        </div>
-        <p>I have a basic understanding of this language and am still working on it.</p>
-      </div>
-      
-      <!-- Java Skill -->
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fab fa-java"></i>
-        </div>
-        <h3 class="skill-name">Java</h3>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="30%"></div>
-        </div>
-        <p>I have a basic understanding of this language and am still working on it.</p>
-      </div>
-      
-      <!-- C++ Skill -->
-      <div class="skill-card">
-        <div class="skill-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <h3 class="skill-name">C++</h3>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="30%"></div>
-        </div>
-        <p>I have a basic understanding of this language and am still working on it.</p>
-      </div>
-      
-      
-      
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Education Section -->
   <section id="education">
@@ -740,7 +789,7 @@
           <div class="edu-info">
             <h3>JG University</h3>
             <p>B.Tech in Information Technology</p>
-            <p>2025 - pursuing</p>
+            <p>2025 - Present</p>
           </div>
         </div>
       </div>
@@ -810,16 +859,17 @@
   <footer>
     <div class="container">
       <div class="footer-socials">
-        <a href="https://www.instagram.com/jayrajsinh_03__?igsh=MTl6OGJxM2ZkMzdkdw==" target="_blank">
+        <a href="https://www.instagram.com/jayrajsinh_03__?igsh=MTl6OGJxM2ZkMzdkdw==" target="_blank" class="floating" style="animation-delay: 0s;">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.facebook.com/share/1SPT9Dgh1Q/" target="_blank">
+        <a href="https://www.facebook.com/share/1SPT9Dgh1Q/" target="_blank" class="floating" style="animation-delay: 0.5s;">
           <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://www.linkedin.com/in/chavda-jayrajsinh-a12611333?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+        <a href="https://www.linkedin.com/in/chavda-jayrajsinh-a12611333?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="floating" style="animation-delay: 1s;">
           <i class="fab fa-linkedin"></i>
         </a>
       </div>
+      <p class="copyright">© 2025 Jayrajsinh Chavda | Made with <i class="fas fa-heart" style="color: var(--gold);"></i></p>
     </div>
   </footer>
 
@@ -845,6 +895,70 @@
       e.preventDefault();
       alert('Thank you for your message! I will get back to you soon.');
       this.reset();
+    });
+    
+    // Animation for sections when they come into view
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+      const skillCards = document.querySelectorAll('.skill-card');
+      const eduCards = document.querySelectorAll('.edu-card');
+      const projectLinks = document.querySelectorAll('.project-link');
+      const chatContainer = document.querySelector('.chat-container');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.2
+      });
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      skillCards.forEach(card => {
+        observer.observe(card);
+      });
+      
+      eduCards.forEach(card => {
+        observer.observe(card);
+      });
+      
+      projectLinks.forEach(link => {
+        observer.observe(link);
+      });
+      
+      if (chatContainer) {
+        observer.observe(chatContainer);
+      }
+      
+      // Scroll progress indicator
+      const scrollProgress = document.querySelector('.scroll-progress');
+      window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        scrollProgress.style.width = `${scrolled}%`;
+      });
+      
+      // Animate skill bars when section is in view
+      const skillSection = document.getElementById('skills');
+      const skillBars = document.querySelectorAll('.skill-progress');
+      
+      const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            skillBars.forEach(bar => {
+              const width = bar.getAttribute('data-width');
+              bar.style.width = width;
+            });
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      skillObserver.observe(skillSection);
     });
   </script>
 
@@ -1003,7 +1117,7 @@
     }
 
     function respHelp() {
-      return `🛠️ Here's what I can do:<br>
+      return `🛠 Here's what I can do:<br>
        👉 "Show your <b>skills</b> 💻"<br>
        👉 "Tell me about your <b>projects</b> 🚀"<br>
        👉 "What is your <b>education</b>? 🎓"<br>
@@ -1136,32 +1250,6 @@
     /* ---------- Initial tip ---------- */
     appendMessage(`💡 Tip: Try "show projects 🚀", "open education 🎓", or "your skills 💻?".<br>
     Type <b>help</b> ❓ anytime.`, "bot");
-
-
-    // Animate skill bars when section is in view
-function animateSkillBars() {
-  const skillSection = document.getElementById('skills');
-  const skillBars = document.querySelectorAll('.skill-progress');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        skillBars.forEach(bar => {
-          const width = bar.getAttribute('data-width');
-          bar.style.width = width;
-        });
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  observer.observe(skillSection);
-}
-
-// Call this function when the page loads
-document.addEventListener('DOMContentLoaded', animateSkillBars);
   </script>
 </body>
-
 </html>
-
-
